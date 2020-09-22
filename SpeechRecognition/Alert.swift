@@ -7,7 +7,16 @@
 
 import UIKit
 
-final class Alert: UIAlertController {
+protocol ButtonsProtocol {
+    var recordButton: UIButton { get set }
+    var keyboardButton: UIButton { get set }
+}
+
+protocol Alertable {
+    func showCustomVoiceActionSheet()
+}
+
+final class Alert: UIAlertController, ButtonsProtocol {
     
     // MARK: - Constants
     
@@ -17,7 +26,6 @@ final class Alert: UIAlertController {
                                          green: 131/255,
                                          blue: 241/255,
                                          alpha: 1)
-        
     }
     
     // MARK: - Properties
@@ -32,7 +40,7 @@ final class Alert: UIAlertController {
         return textField
     }()
     
-    private let recordButton: UIButton = {
+    var recordButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0,
                                             width: 74, height: 74))
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -44,31 +52,17 @@ final class Alert: UIAlertController {
         return button
     }()
     
-    private let keyboardButton: UIButton = {
+    var keyboardButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0,
                                             width: 25, height: 25))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "Keyboard"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         
-        
         return button
     }()
     
-    // MARK: - Public methods
-    
-    func showCustomVoiceActionSheet() {
-        let spacing = String(repeating: "\n", count: 9)
-        let actionSheet = UIAlertController(title: spacing,
-                                            message: nil,
-                                            preferredStyle: .actionSheet)
-        let contentView = configurateContentView()
-        actionSheet.view.addSubview(contentView)
-        //present(actionSheet, animated: true, completion: nil)
-        UIApplication.topViewController()?.present(actionSheet, animated: true, completion: nil)
-    }
-    
-    // MARK: - Private methods
+    // MARK: - ContentView
     
     private func configurateContentView() -> UIView {
         let contentView = UIView(frame: CGRect(x: -8, y: 0,
@@ -117,19 +111,15 @@ final class Alert: UIAlertController {
     }
 }
 
-extension UIApplication {
-    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        if let navigationController = controller as? UINavigationController {
-            return topViewController(controller: navigationController.visibleViewController)
-        }
-        if let tabController = controller as? UITabBarController {
-            if let selected = tabController.selectedViewController {
-                return topViewController(controller: selected)
-            }
-        }
-        if let presented = controller?.presentedViewController {
-            return topViewController(controller: presented)
-        }
-        return controller
+extension Alert: Alertable {
+    func showCustomVoiceActionSheet() {
+        let spacing = String(repeating: "\n", count: 9)
+        let actionSheet = UIAlertController(title: spacing,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        let contentView = configurateContentView()
+        actionSheet.view.addSubview(contentView)
+        //present(actionSheet, animated: true, completion: nil)
+        UIApplication.topViewController()?.present(actionSheet, animated: true, completion: nil)
     }
 }

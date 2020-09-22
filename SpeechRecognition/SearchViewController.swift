@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let alert = Alert()
+    private let alertController = Alert()
     
     private let dataSource = ["Штрафы", "Курс Валют", "Карты и счета", "Переводы", "Шаблоны"].sorted()
     private var filteredDataSource = [String]()
@@ -36,7 +36,7 @@ class SearchViewController: UIViewController {
         return tableView
     }()
     
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
     
     
     // MARK: - Life cycle
@@ -47,6 +47,9 @@ class SearchViewController: UIViewController {
         title = Constants.title
         setupTableView()
         setupSearchController()
+        
+        alertController.recordButton.addTarget(self, action: #selector(recordPressed), for: .touchUpInside)
+        alertController.keyboardButton.addTarget(self, action: #selector(keyboardPressed), for: .touchUpInside)
     }
     
     // MARK: - TableView
@@ -67,7 +70,6 @@ class SearchViewController: UIViewController {
 
         searchController.searchBar.placeholder = Constants.title
         
-        
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
@@ -77,6 +79,22 @@ class SearchViewController: UIViewController {
         searchController.searchBar.showsCancelButton = true
         definesPresentationContext = true
         searchController.searchBar.delegate = self
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func recordPressed() {
+        print(#function)
+        alertController.recordButton.addShadow()
+    }
+    
+    @objc private func keyboardPressed() {
+        print(#function)
+        
+        dismiss(animated: true) {
+            self.alertController.recordButton.removeShadow()
+        }
+        searchController.searchBar.resignFirstResponder()
     }
 }
 
@@ -117,6 +135,6 @@ extension SearchViewController: UISearchResultsUpdating {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
-        alert.showCustomVoiceActionSheet()
+        alertController.showCustomVoiceActionSheet()
     }
 }

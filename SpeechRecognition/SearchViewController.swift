@@ -18,6 +18,8 @@ class SearchViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let alert = Alert()
+    
     private let dataSource = ["Штрафы", "Курс Валют", "Карты и счета", "Переводы", "Шаблоны"].sorted()
     private var filteredDataSource = [String]()
     private var searchBarIsEmplty: Bool {
@@ -74,6 +76,7 @@ class SearchViewController: UIViewController {
         searchController.searchBar.showsBookmarkButton = true
         searchController.searchBar.showsCancelButton = true
         definesPresentationContext = true
+        searchController.searchBar.delegate = self
     }
 }
 
@@ -108,5 +111,12 @@ extension SearchViewController: UISearchResultsUpdating {
         // регистронезависимая фильтрация
         filteredDataSource = dataSource.filter { $0.lowercased().contains(searchText.lowercased()) }
         tableView.reloadData()
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        print(#function)
+        alert.showCustomVoiceActionSheet()
     }
 }

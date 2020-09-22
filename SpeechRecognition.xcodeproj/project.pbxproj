@@ -12,6 +12,8 @@
 		957911502519ECA600F8B183 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9579114E2519ECA600F8B183 /* LaunchScreen.storyboard */; };
 		9579115E251A034200F8B183 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579115D251A034200F8B183 /* SearchViewController.swift */; };
 		95791161251A068F00F8B183 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791160251A068F00F8B183 /* Constraints.swift */; };
+		95791166251A3A3F00F8B183 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791165251A3A3F00F8B183 /* Alert.swift */; };
+		95791169251A3A9F00F8B183 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791168251A3A9F00F8B183 /* UIView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		957911512519ECA600F8B183 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9579115D251A034200F8B183 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		95791160251A068F00F8B183 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		95791165251A3A3F00F8B183 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		95791168251A3A9F00F8B183 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			children = (
 				957911432519ECA500F8B183 /* AppDelegate.swift */,
 				9579115D251A034200F8B183 /* SearchViewController.swift */,
+				95791165251A3A3F00F8B183 /* Alert.swift */,
 				95791163251A06AF00F8B183 /* Helpers */,
 				9579114C2519ECA600F8B183 /* Assets.xcassets */,
 				9579114E2519ECA600F8B183 /* LaunchScreen.storyboard */,
@@ -68,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				95791160251A068F00F8B183 /* Constraints.swift */,
+				95791168251A3A9F00F8B183 /* UIView+.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -143,7 +149,9 @@
 			files = (
 				9579115E251A034200F8B183 /* SearchViewController.swift in Sources */,
 				95791161251A068F00F8B183 /* Constraints.swift in Sources */,
+				95791166251A3A3F00F8B183 /* Alert.swift in Sources */,
 				957911442519ECA500F8B183 /* AppDelegate.swift in Sources */,
+				95791169251A3A9F00F8B183 /* UIView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

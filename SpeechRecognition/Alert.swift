@@ -120,13 +120,13 @@ extension Alert: Alertable {
                                             preferredStyle: .actionSheet)
         let contentView = configurateContentView()
         actionSheet.view.addSubview(contentView)
+        self.recordedTextField.text = nil
         UIApplication.topViewController()?.present(actionSheet, animated: true, completion: nil)
     }
     
     func closeCustomVoiceActionSheet() {
         UIApplication.topViewController()?.dismiss(animated: true) {
             self.recordButton.removeShadow()
-            self.recordedTextField.text = nil
         }
     }
 }

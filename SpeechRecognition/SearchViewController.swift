@@ -89,14 +89,17 @@ class SearchViewController: UIViewController {
     @objc private func recordPressed() {
         print(#function)
         alertController.recordButton.addShadow()
-        
-        if speech.audioEngine!.isRunning {
+        audioEngine(isRunning: speech.audioEngine!.isRunning)
+    }
+    
+    private func audioEngine(isRunning: Bool) {
+        switch isRunning {
+        case true:
             speech.stopRecording()
             searchController.searchBar.text = searchText
             alertController.closeCustomVoiceActionSheet()
-            searchController.searchBar.resignFirstResponder()
             updateSearchResults(for: searchController)
-        } else {
+        case false:
             speech.startRecording { (outputText) in
                 self.searchText = outputText
                 self.alertController.recordedTextField.text = self.searchText + "..."

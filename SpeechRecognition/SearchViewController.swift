@@ -19,6 +19,8 @@ class SearchViewController: UIViewController {
     // MARK: - Properties
     
     private let alertController = Alert()
+    private let speech = Speech()
+    private var searchText = String()
     
     private let dataSource = ["Штрафы", "Курс Валют", "Карты и счета", "Переводы", "Шаблоны"].sorted()
     private var filteredDataSource = [String]()
@@ -47,6 +49,7 @@ class SearchViewController: UIViewController {
         title = Constants.title
         setupTableView()
         setupSearchController()
+        speech.checkStatus()
         
         alertController.recordButton.addTarget(self, action: #selector(recordPressed), for: .touchUpInside)
         alertController.keyboardButton.addTarget(self, action: #selector(keyboardPressed), for: .touchUpInside)
@@ -86,14 +89,25 @@ class SearchViewController: UIViewController {
     @objc private func recordPressed() {
         print(#function)
         alertController.recordButton.addShadow()
+        
+        if speech.audioEngine!.isRunning {
+            speech.stopRecording()
+            searchController.searchBar.text = searchText
+            alertController.closeCustomVoiceActionSheet()
+            searchController.searchBar.resignFirstResponder()
+            updateSearchResults(for: searchController)
+        } else {
+            speech.startRecording { (outputText) in
+                self.searchText = outputText
+                self.alertController.recordedTextField.text = self.searchText + "..."
+            }
+        }
     }
     
     @objc private func keyboardPressed() {
         print(#function)
-        
-        dismiss(animated: true) {
-            self.alertController.recordButton.removeShadow()
-        }
+        alertController.closeCustomVoiceActionSheet()
+        speech.stopRecording()
         searchController.searchBar.resignFirstResponder()
     }
 }
@@ -135,6 +149,6 @@ extension SearchViewController: UISearchResultsUpdating {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
-        alertController.showCustomVoiceActionSheet()
+            alertController.showCustomVoiceActionSheet()
     }
 }

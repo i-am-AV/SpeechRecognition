@@ -14,6 +14,7 @@
 		95791161251A068F00F8B183 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791160251A068F00F8B183 /* Constraints.swift */; };
 		95791166251A3A3F00F8B183 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791165251A3A3F00F8B183 /* Alert.swift */; };
 		95791169251A3A9F00F8B183 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791168251A3A9F00F8B183 /* UIView+.swift */; };
+		9579116C251A90FD00F8B183 /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579116B251A90FD00F8B183 /* Speech.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		95791160251A068F00F8B183 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		95791165251A3A3F00F8B183 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		95791168251A3A9F00F8B183 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		9579116B251A90FD00F8B183 /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				957911432519ECA500F8B183 /* AppDelegate.swift */,
 				9579115D251A034200F8B183 /* SearchViewController.swift */,
 				95791165251A3A3F00F8B183 /* Alert.swift */,
+				9579116B251A90FD00F8B183 /* Speech.swift */,
 				95791163251A06AF00F8B183 /* Helpers */,
 				9579114C2519ECA600F8B183 /* Assets.xcassets */,
 				9579114E2519ECA600F8B183 /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 				9579115E251A034200F8B183 /* SearchViewController.swift in Sources */,
 				95791161251A068F00F8B183 /* Constraints.swift in Sources */,
 				95791166251A3A3F00F8B183 /* Alert.swift in Sources */,
+				9579116C251A90FD00F8B183 /* Speech.swift in Sources */,
 				957911442519ECA500F8B183 /* AppDelegate.swift in Sources */,
 				95791169251A3A9F00F8B183 /* UIView+.swift in Sources */,
 			);

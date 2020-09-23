@@ -14,6 +14,7 @@ protocol ButtonsProtocol {
 
 protocol Alertable {
     func showCustomVoiceActionSheet()
+    func closeCustomVoiceActionSheet()
 }
 
 final class Alert: UIAlertController, ButtonsProtocol {
@@ -30,7 +31,7 @@ final class Alert: UIAlertController, ButtonsProtocol {
     
     // MARK: - Properties
     
-    private let recordedTextField: UITextField = {
+    var recordedTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.boldSystemFont(ofSize: 22)
@@ -119,7 +120,13 @@ extension Alert: Alertable {
                                             preferredStyle: .actionSheet)
         let contentView = configurateContentView()
         actionSheet.view.addSubview(contentView)
-        //present(actionSheet, animated: true, completion: nil)
         UIApplication.topViewController()?.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func closeCustomVoiceActionSheet() {
+        UIApplication.topViewController()?.dismiss(animated: true) {
+            self.recordButton.removeShadow()
+            self.recordedTextField.text = nil
+        }
     }
 }

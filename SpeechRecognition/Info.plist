@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Разрешить $(PRODUCT_NAME) распознавать речь?</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Разрешить $(PRODUCT_NAME) доступ к микрофону?</string>
 </dict>
 </plist>
